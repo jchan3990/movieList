@@ -1,0 +1,46 @@
+body {
+  font-family: sans-serif, arial;
+}
+
+h1 {
+  background-color: lightgrey;
+  display: block;
+  height: 75px;
+  line-height: 75px;
+  padding-left: 10px;
+  position: relative;
+  width: 100%;
+}
+
+input {
+  width: 200px;
+}
+
+.movieListContainer {
+  display: grid;
+  left: 50px;
+  position: relative;
+  top: 150px;
+  width: 90%;
+}
+
+.movieItem {
+  border: solid black 1px;
+  height: 75px;
+  line-height: 75px;
+  padding-left: 30px;
+}
+
+#searchContainer {
+  display: block;
+  left: 90px;
+  position: relative;
+  top: 140px;
+  width: 300px;
+}
+
+.showAll {
+  position: absolute;
+  top: 275px;
+  left: 98px;
+}
