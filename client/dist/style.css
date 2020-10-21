@@ -78,3 +78,39 @@ h1 {
   background-Color: red;
   color: white;
 }
+
+.watchedToWatchContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+  top: 167px;
+}
+
+.watchedTab {
+  border: black solid 1px;
+  height: 75px;
+  left: 90px;
+  line-height: 75px;
+  position: relative;
+  text-align: center;
+  width: 100px;
+}
+
+.toWatchTab {
+  border: black solid 1px;
+  height: 75px;
+  line-height: 75px;
+  position: relative;
+  right: 254px;
+  text-align: center;
+  width: 100px;
+}
+
+#toWatchBtn {
+  float: right;
+  position: relative;
+  right: 20px;
+  top: 25px;
+}
+
+

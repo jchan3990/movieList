@@ -4,19 +4,37 @@ import axios from 'axios';
 import MovieList from './MovieList.jsx';
 import SearchBar from './SearchBar.jsx';
 import AddBar from './AddBar.jsx';
+import ToWatchList from './ToWatchList.jsx';
 
 var movies = [
   {title: 'Mean Girls', watched: true},
   {title: 'Hackers', watched: true},
-  {title: 'The Grey', watched: true},
-  {title: 'Sunshine', watched: true},
+  {title: 'The Grey', watched: false},
+  {title: 'Sunshine', watched: false},
   {title: 'Ex Machina', watched: true},
 ];
 
 const App = () => {
-  const [movieList, setMovieList] = useState(movies);
-  const [watchedList, setWatchedList] = useState([]);
+  const [movieList, setMovieList] = useState([]);
+  const [toWatchList, setToWatchList] = useState([]);
   const [searched, setSearched] = useState(false);
+  const [watchedTab, setWatchedTab] = useState(true);
+
+  useEffect(() => {
+    getMovies();
+  }, [])
+
+  const getMovies = () => {
+    let watched = [];
+    let toWatch = [];
+    movies.forEach(movie => {
+      if (movie.watched) watched.push(movie);
+      else toWatch.push(movie);
+    })
+
+    setMovieList(watched);
+    setToWatchList(toWatch);
+  }
 
   const onSearch = (search) => {
     let searchList = [];
@@ -44,14 +62,19 @@ const App = () => {
 
     list.push({
       title: capTitle.join(' '),
-      watched: true,
+      watched: false,
     });
     setMovieList(list);
   }
 
   const onShowAll = () => {
     setSearched(false);
-    setMovieList(movies);
+    getMovies();
+  }
+
+  const showWatched = () => {
+    if (watchedTab) return (<MovieList movies={movieList} />);
+    else return (<ToWatchList movies={toWatchList} />)
   }
 
   const showAll = () => {
@@ -60,12 +83,20 @@ const App = () => {
     }
   }
 
+  let watchedTabStyle = {backgroundColor: watchedTab ? "green" : "white"};
+  let toWatchTabStyle = {backgroundColor: !watchedTab ? "green" : "white"};
+
   return (
     <div>
       <h1>El Cine del Mundo</h1>
       <AddBar onAdd={onAdd} />
       <SearchBar onSearch={onSearch} />
-      <MovieList movies={movieList} />
+      <div className="watchedToWatchContainer">
+        <div style={watchedTabStyle} className="watchedTab" onClick={() => setWatchedTab(true)} >Watched</div>
+        <div style={toWatchTabStyle} className="toWatchTab" onClick={() => setWatchedTab(false)} >To Watch</div>
+      </div>
+      {/* <MovieList movies={movieList} /> */}
+      {showWatched()}
       {showAll()}
     </div>
   )

@@ -6,17 +6,12 @@ const AddBar = ({ onAdd }) => {
   const addMovie = (e) => {
     e.preventDefault();
     if (movieTitle.length) onAdd(movieTitle);
-    resetAdd();
-  }
-
-  const resetAdd = () => {
     setMovieTitle('');
-    document.getElementById("addBarContainer").reset();
   }
 
   return (
     <form id="addBarContainer" onSubmit={addMovie} >
-      <input id="addInput" type="text" name="title" placeholder="Agrega el título de la película aquí" onChange={(e) => setMovieTitle(e.target.value)} />
+      <input id="addInput" type="text" name="title" placeholder="Agrega el título de la película aquí" onChange={(e) => setMovieTitle(e.target.value)} value={movieTitle} />
       <button className="AddBtn">Agregar</button>
     </form>
   )
