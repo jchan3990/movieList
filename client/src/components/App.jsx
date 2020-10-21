@@ -67,14 +67,21 @@ const App = () => {
     setMovieList(list);
   }
 
+  const handleWatched = (title, status) => {
+    movies.forEach(movie => {
+      if (movie.title === title) movie.watched = status;
+    })
+    getMovies();
+  }
+
   const onShowAll = () => {
     setSearched(false);
     getMovies();
   }
 
-  const showWatched = () => {
-    if (watchedTab) return (<MovieList movies={movieList} />);
-    else return (<ToWatchList movies={toWatchList} />)
+  const showMovies = () => {
+    if (watchedTab) return (<MovieList movies={movieList} handleWatched={handleWatched} />);
+    else return (<ToWatchList movies={toWatchList} handleWatched={handleWatched} />)
   }
 
   const showAll = () => {
@@ -95,8 +102,7 @@ const App = () => {
         <div style={watchedTabStyle} className="watchedTab" onClick={() => setWatchedTab(true)} >Watched</div>
         <div style={toWatchTabStyle} className="toWatchTab" onClick={() => setWatchedTab(false)} >To Watch</div>
       </div>
-      {/* <MovieList movies={movieList} /> */}
-      {showWatched()}
+      {showMovies()}
       {showAll()}
     </div>
   )

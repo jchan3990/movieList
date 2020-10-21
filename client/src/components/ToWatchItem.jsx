@@ -1,22 +1,14 @@
 import React, { useState } from 'react';
 
-const ToWatchItem = ({ movie }) => {
-  const [watched, setWatched] = useState(movie.watched);
-
+const ToWatchItem = ({ movie, clickWatched }) => {
   const handleClick = () => {
-    if (!watched) {
-      setWatched(true);
-    } else {
-      setWatched(false);
-    }
+    clickWatched(movie.title, !movie.watched);
   }
-
-  let classname = watched ? "watched" : "notWatched";
 
   return (
     <div className="movieItem">
       <span className="movie">{movie.title}</span>
-      <button id="toWatchBtn" className={classname} onClick={handleClick}>Watched</button>
+      <button id="toWatchBtn" className="notWatched" onClick={handleClick}>Visto</button>
     </div>
   )
 };

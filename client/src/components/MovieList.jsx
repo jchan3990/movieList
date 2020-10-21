@@ -2,12 +2,16 @@ import React from 'react';
 
 import MovieItem from './MovieItem.jsx'
 
-const MovieList = ({ movies }) => {
+const MovieList = ({ movies, handleWatched }) => {
+  const clickWatched = (title, status) => {
+    handleWatched(title, status);
+  }
+
   return (
     <div className="movieListContainer">
       <ul>
         {movies.map((movie, idx) => (
-          <MovieItem key={idx} id={idx} movie={movie} />
+          <MovieItem key={idx} movie={movie} clickWatched={clickWatched} />
         ))}
       </ul>
     </div>
