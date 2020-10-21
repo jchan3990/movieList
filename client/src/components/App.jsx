@@ -49,7 +49,6 @@ const App = () => {
   }
 
   const onAdd = (title) => {
-    let list = [...movieList];
     let capTitle = [];
     title = title.split(' ');
 
@@ -60,11 +59,11 @@ const App = () => {
       capTitle.push(word.join(''));
     }
 
-    list.push({
+    movies.push({
       title: capTitle.join(' '),
       watched: false,
     });
-    setMovieList(list);
+    getMovies();
   }
 
   const handleWatched = (title, status) => {
