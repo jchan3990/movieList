@@ -5,7 +5,7 @@ const SearchBar = ({ onSearch }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    onSearch(title);
+    if (title.length) onSearch(title);
     resetSearch();
   }
 
@@ -16,7 +16,7 @@ const SearchBar = ({ onSearch }) => {
 
   return (
     <form id="searchContainer" onSubmit={onSubmit} >
-      <input type="search" name="title" placeholder="Buscar..." onChange={(e) => setTitle(e.target.value)} />
+      <input id="searchInput" type="search" name="title" placeholder="Buscar..." onChange={(e) => setTitle(e.target.value)} />
       <button>¡Vamos!</button>
     </form>
   )

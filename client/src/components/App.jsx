@@ -3,13 +3,14 @@ import axios from 'axios';
 
 import MovieList from './MovieList.jsx';
 import SearchBar from './SearchBar.jsx';
+import AddBar from './AddBar.jsx';
 
 var movies = [
-  {title: 'Mean Girls'},
-  {title: 'Hackers'},
-  {title: 'The Grey'},
-  {title: 'Sunshine'},
-  {title: 'Ex Machina'},
+  {title: 'Mean Girls', watched: false},
+  {title: 'Hackers', watched: false},
+  {title: 'The Grey', watched: false},
+  {title: 'Sunshine', watched: false},
+  {title: 'Ex Machina', watched: false},
 ];
 
 const App = () => {
@@ -28,11 +29,16 @@ const App = () => {
     else setMovieList([]);
   }
 
+  const onAdd = (title) => {
+    let list = [...movieList];
+    list.push({title: title});
+    setMovieList(list);
+  }
+
   const onShowAll = () => {
     setSearched(false);
     setMovieList(movies);
   }
-
 
   const showAll = () => {
     if (searched) {
@@ -43,6 +49,7 @@ const App = () => {
   return (
     <div>
       <h1>El Cine del Mundo</h1>
+      <AddBar onAdd={onAdd} />
       <SearchBar onSearch={onSearch} />
       <MovieList movies={movieList} />
       {showAll()}

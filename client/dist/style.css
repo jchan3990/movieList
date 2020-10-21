@@ -1,3 +1,20 @@
+#addBarContainer {
+  display: block;
+  left: 90px;
+  position: relative;
+  top: 140px;
+  width: 350px;
+}
+
+.addBtn {
+  background-color: green;
+  color: white;
+}
+
+#addInput {
+  width: 250px;
+}
+
 body {
   font-family: sans-serif, arial;
 }
@@ -12,7 +29,7 @@ h1 {
   width: 100%;
 }
 
-input {
+#searchInput {
   width: 200px;
 }
 
@@ -41,6 +58,23 @@ input {
 
 .showAll {
   position: absolute;
-  top: 275px;
+  top: 312px;
   left: 98px;
+}
+
+#watchedBtn {
+  float: right;
+  position: relative;
+  right: 20px;
+  top: 25px;
+}
+
+.watched {
+  background-color: green;
+  color: white;
+}
+
+.notWatched {
+  background-Color: red;
+  color: white;
 }
