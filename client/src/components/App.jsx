@@ -6,15 +6,16 @@ import SearchBar from './SearchBar.jsx';
 import AddBar from './AddBar.jsx';
 
 var movies = [
-  {title: 'Mean Girls', watched: false},
-  {title: 'Hackers', watched: false},
-  {title: 'The Grey', watched: false},
-  {title: 'Sunshine', watched: false},
-  {title: 'Ex Machina', watched: false},
+  {title: 'Mean Girls', watched: true},
+  {title: 'Hackers', watched: true},
+  {title: 'The Grey', watched: true},
+  {title: 'Sunshine', watched: true},
+  {title: 'Ex Machina', watched: true},
 ];
 
 const App = () => {
   const [movieList, setMovieList] = useState(movies);
+  const [watchedList, setWatchedList] = useState([]);
   const [searched, setSearched] = useState(false);
 
   const onSearch = (search) => {
@@ -31,7 +32,20 @@ const App = () => {
 
   const onAdd = (title) => {
     let list = [...movieList];
-    list.push({title: title});
+    let capTitle = [];
+    title = title.split(' ');
+
+    for (let i = 0; i < title.length; i++) {
+      let word = title[i];
+      word = word.split('');
+      word[0] = word[0].toUpperCase();
+      capTitle.push(word.join(''));
+    }
+
+    list.push({
+      title: capTitle.join(' '),
+      watched: true,
+    });
     setMovieList(list);
   }
 

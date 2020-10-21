@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 
-const MovieItem = ({ movie }) => {
-  const [watched, setWatched] = useState(false);
+const MovieItem = ({ movie, id }) => {
+  const [watched, setWatched] = useState(movie.watched);
 
   const handleClick = () => {
-    if (!watched) setWatched(true);
-    else setWatched(false);
+    if (!watched) {
+      setWatched(true);
+    } else {
+      setWatched(false);
+    }
   }
 
   let classname = watched ? "watched" : "notWatched";
