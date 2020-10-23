@@ -26,7 +26,7 @@ const App = () => {
 
   const getMovies = () => {
     let watched = movies.filter(movie => movie.watched === true);
-    let toWatch = movies.filter(movie => movie.watched ===false);
+    let toWatch = movies.filter(movie => movie.watched === false);
 
     setMovieList(watched);
     setToWatchList(toWatch);
