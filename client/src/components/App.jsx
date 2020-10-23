@@ -25,12 +25,8 @@ const App = () => {
   }, [])
 
   const getMovies = () => {
-    let watched = [];
-    let toWatch = [];
-    movies.forEach(movie => {
-      if (movie.watched) watched.push(movie);
-      else toWatch.push(movie);
-    })
+    let watched = movies.filter(movie => movie.watched === true);
+    let toWatch = movies.filter(movie => movie.watched ===false);
 
     setMovieList(watched);
     setToWatchList(toWatch);
